@@ -1,39 +1,48 @@
-//WAP in CPP to print the butterfly
-
 #include<iostream>
 using namespace std;
-int main(){
+
+int main() {
     int n;
-    cout<<"Enter the number of width of triangle";
-    cin>>n;
-    int s,i,j,k;
-    s=2;
-    for(i=1;i<=n;i++){
-        // for(k=1;k<=s;k++)
-        //     cout<<" ";
-        if(i<=(n/2)+1){
-        for(j=1;j<=i;j++)
-            cout<<" * ";
+    cout << "Enter the number of width of triangle: ";
+    cin >> n;
+    
+    // Upper part of the butterfly
+    for(int i = 0; i < n; i++) {
+        // Print stars for left side
+        for(int j = 0; j <=i; j++)
+            cout << "* ";
+
+        // Print spaces for gap
+        for(int k = 0; k < 2 * (n - i - 1) -1 ; k++)
+            cout << "  ";
+
+        // Print stars for right side
+        for(int j = 0; n-1!=i ? j <= i : j<i ; j++) {
+                cout << "* ";
         }
-        else{
-            for(j=1;j<=i-s;j++)
-                cout<<" * ";
-            s+=2;
-        }
-        
-        cout<<"\n";
-    }
-     s=n-1;
-     for(i=2;i<=n;i++){
-        for(k=1;k<s;k++)
-            cout<<" ";
-        for(j=1;j<=(2*i)-1;j++)
-            cout<<"*";
-        s--;
-     
-        cout<<endl;
-     
-            
+
+        cout << endl;
     }
 
+    // Lower part of the butterfly
+    for(int i = n - 2; i >= 0; i--) {
+        // Print stars for left side
+        for(int j = 0; j <= i; j++)
+            cout << "* ";
+
+        // Print spaces for gap
+        
+        for(int k = 0; k < 2 * (n - i - 1) - 1; k++)
+            cout << "  ";
+
+        // Print stars for right side
+        for(int j = 0; j <= i; j++) {
+            
+                cout << "* ";
+        }
+
+        cout << endl;
+    }
+
+    return 0;
 }
