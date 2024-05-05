@@ -1,4 +1,5 @@
 //WAP in CPP to print the pascal's triangle
+
 #include<iostream>
 using namespace std;
 
@@ -19,16 +20,6 @@ int main(){
     int n,i,j;
     cout<<"Enter the number of rows";
     cin>>n;
-    // int s=n-1;
-    // for(int i=0;i<n;i++){
-    //     for(int k=1;k<=s;k++){
-    //         cout<<" ";
-    //         s--;}
-    //     for(int j=0;j<=i;j++){
-    //         int v=Pascaltriangle(i,j);
-    //         cout<<v<<" ";
-        
-    //     }
         int s=n-1,val;
     for(int i=0;i<n;i++)
     {

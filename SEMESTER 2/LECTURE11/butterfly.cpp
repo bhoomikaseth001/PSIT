@@ -1,3 +1,5 @@
+//write a program in cpp to print a pattern that looks like a butterfly
+
 #include<iostream>
 using namespace std;
 

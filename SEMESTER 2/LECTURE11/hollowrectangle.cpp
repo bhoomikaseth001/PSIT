@@ -1,4 +1,5 @@
 //WAP in CPP to print hollow rectangle
+
 #include<iostream>
 using namespace std;
 int main(){

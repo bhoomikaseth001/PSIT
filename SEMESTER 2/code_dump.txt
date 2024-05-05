@@ -1,0 +1,354 @@
+
+                                   LECTURE 10                                   
+                               AltMartixSort.cpp                                
+
+//    WAP in CPP to print a matrix and then sort rows in ascending and descending order alternatively 
+//complexity O(n^3) 
+
+#include<iostream>
+using namespace std;
+int main(){
+    int r,c,i,j,k;
+    cout<<"Enter the rows ";
+    cin>>r;
+    cout<<"Enter the columns ";
+    cin>>c;
+
+    int arr[r][c];
+    cout<<"Enter the elements: "<<endl;
+    for(i=0;i<r;i++){
+        for( j=0;j<c;j++){
+            cin>>arr[i][j];
+        }
+    }
+
+    for(i=0;i<r;i++){
+        if(i%2==0){
+            for(j=0;j<c-1;j++){
+        for(k=0;k<c-j-1;k++){
+        
+                if(arr[i][k+1]<arr[i][k]){
+                    int temp=arr[i][k];
+		            arr[i][k]=arr[i][k+1];
+		            arr[i][k+1]=temp;
+                }
+            }
+        }
+    }
+        else{
+            for(j=0;j<c-1;j++){
+        for(k=0;k<c-j-1;k++){
+        
+                if(arr[i][k+1]>arr[i][k]){
+                    int temp=arr[i][k];
+		            arr[i][k]=arr[i][k+1];
+		            arr[i][k+1]=temp;
+                }
+            }
+        }
+        }
+}
+        cout<<"After swapping"<<endl;
+    for(i=0;i<r;i++){
+        for( j=0;j<c;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+    }
+
+
+                                   LECTURE 10                                   
+                           AltMatrixSortOptimised.cpp                           
+
+//    WAP in CPP to print a matrix and then sort rows in ascending and descending order alternatively 
+//complexity O(n^3)
+ 
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main(){
+    int r,c,i,j,k;
+    cout<<"Enter the rows ";
+    cin>>r;
+    cout<<"Enter the columns ";
+    cin>>c;
+
+    int arr[r][c];
+
+    cout<<"Enter the elements: "<<endl;
+    for(i=0;i<r;i++){
+        for( j=0;j<c;j++){
+            cin>>arr[i][j];
+        }
+    }
+
+    for(i=0;i<r;i++){
+        if(i%2==0){
+            sort(arr[i],arr[i]+c);
+        }
+        else{
+            sort(arr[i],arr[i]+c,greater<int>());
+        }
+
+        }
+        cout<<"After swapping"<<endl;
+    for(i=0;i<r;i++){
+        for( j=0;j<c;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+    }
+
+
+                                   LECTURE 10                                   
+                               matrixtemplate.cpp                               
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+template<typename B>
+void Sort(B *arr,int r,int c);
+int main(){
+    int r,c,i,j,k;
+    cout<<"Enter the rows ";
+    cin>>r;
+    cout<<"Enter the columns ";
+    cin>>c;
+
+    int arr[r][c];
+
+    cout<<"Enter the elements: "<<endl;
+    for(i=0;i<r;i++){
+        for( j=0;j<c;j++){
+            cin>>arr[i][j];
+        }
+    }
+
+    cout<<"After swapping"<<endl;
+    for(i=0;i<r;i++){
+        for( j=0;j<c;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+    template<typename B>
+    void Sort(B *arr,int r,int c){
+        int i;
+    for(i=0;i<r;i++){
+        if(i%2==0){
+            sort(arr[i],arr[i]+c);
+        }
+        else{
+            sort(arr[i],arr[i]+c,greater<int>());
+        }
+
+        }
+        
+    }
+
+
+                                   LECTURE 10                                   
+                                  template.cpp                                  
+
+#include<iostream>
+template<typename T>
+void Swap(T &a,T &b);
+int main(){
+    using namespace std;
+    int i=10;
+    int j=20;
+    cout<<"i,j= "<<i<<" , "<<j<<"\n";
+    cout<<"Using compiler generated int swapper\n";
+    Swap(i,j);
+    cout<<"Now i,j= "<<i<<" , "<<j<<"\n";
+
+    double x=24.5;
+    double y=54.2;
+    cout<<"x,y= "<<x<<" , "<<y<<"\n";
+    cout<<"Using compiler generated int swapper\n";
+    Swap(x,y);
+    cout<<"Now x,y= "<<x<<" , "<<y<<"\n";
+}
+    template <typename T>
+    void Swap(T &a, T &b)
+    {
+        T temp= a;
+        a=b;
+        b=temp;
+    }
+
+
+                                   LECTURE 10                                   
+                             templateoverloaded.cpp                             
+
+
+
+
+                                   LECTURE 11                                   
+                                 butterfly.cpp                                  
+
+//write a program in cpp to print a pattern that looks like a butterfly
+
+#include<iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the number of width of triangle: ";
+    cin >> n;
+    
+    // Upper part of the butterfly
+    for(int i = 0; i < n; i++) {
+        // Print stars for left side
+        for(int j = 0; j <=i; j++)
+            cout << "* ";
+
+        // Print spaces for gap
+        for(int k = 0; k < 2 * (n - i - 1) -1 ; k++)
+            cout << "  ";
+
+        // Print stars for right side
+        for(int j = 0; n-1!=i ? j <= i : j<i ; j++) {
+                cout << "* ";
+        }
+
+        cout << endl;
+    }
+
+    // Lower part of the butterfly
+    for(int i = n - 2; i >= 0; i--) {
+        // Print stars for left side
+        for(int j = 0; j <= i; j++)
+            cout << "* ";
+
+        // Print spaces for gap
+        
+        for(int k = 0; k < 2 * (n - i - 1) - 1; k++)
+            cout << "  ";
+
+        // Print stars for right side
+        for(int j = 0; j <= i; j++) {
+            
+                cout << "* ";
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
+
+
+                                   LECTURE 11                                   
+                              hollowrectangle.cpp                               
+
+//WAP in CPP to print hollow rectangle
+
+#include<iostream>
+using namespace std;
+int main(){
+    int l,b,i,j;
+    cout<<"Enter the number of length of a rectangle";
+    cin>>l;
+    cout<<"Enter the number of breadth of a rectangle";
+    cin>>b;
+    for(i=1;i<=b;i++){
+        for(j=1;j<=l;j++){
+            if(i==1||j==1||i==b||j==l)
+                cout<<"*";
+            else
+                cout<<" ";
+        }
+        cout<<"\n";
+    }
+
+    }
+
+
+                                   LECTURE 11                                   
+                                 hourglass.cpp                                  
+
+//WAP in CPP to print the Hour glass
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cout<<"Enter the number of rows in upper triangle";
+    cin>>n;
+    int s,i,j,k;
+    s=0;
+    for(i=n;i>=1;i--){
+        for(k=1;k<=s;k++)
+            cout<<"   ";
+        for(j=1;j<=(2*i)-1;j++)
+            cout<<" * ";
+        s++;
+        cout<<"\n";
+    }
+     s=n-1;
+     for(i=2;i<=n;i++){
+        for(k=1;k<s;k++)
+            cout<<"   ";
+        for(j=1;j<=(2*i)-1;j++)
+            cout<<" * ";
+        s--;
+        
+        cout<<endl;
+    }
+
+}
+
+
+                                   LECTURE 11                                   
+                               Pascaltriangle.cpp                               
+
+//WAP in CPP to print the pascal's triangle
+
+#include<iostream>
+using namespace std;
+
+int factorial(int n){
+    int f=1;
+    for(int i=1;i<=n;i++){
+        f*=i;
+    }
+    return f;
+}
+int Pascaltriangle(int i,int j){
+    int value;
+             value = factorial(i)/(factorial(j)*factorial(i-j));
+    
+    return value;
+}
+int main(){
+    int n,i,j;
+    cout<<"Enter the number of rows";
+    cin>>n;
+        int s=n-1,val;
+    for(int i=0;i<n;i++)
+    {
+        for(int k=1;k<=s;k++)
+        cout<<" ";
+         s--;
+        for(int j=0;j<=i;j++)
+        {val=factorial(i)/(factorial(j)*factorial(i-j));
+        cout<<" "<<val<<" ";}
+       
+        cout<<endl;
+    }
+    
+}
+
+
+                                   LECTURE 11                                   
+                             RotatationOfArray.cpp                              
+
+//WAP in CPP to print the rotation of an array by k-times using function template
+
