@@ -20,5 +20,18 @@ int main(){
 
     }
 
+/*
+Output:
+Enter the number of length of a rectangle 7
+Enter the number of breadth of a rectangle 8
+*******
+*     *
+*     *
+*     *
+*     *
+*     *
+*     *
+*******    */
+
 
     

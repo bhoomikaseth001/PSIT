@@ -28,3 +28,14 @@ int main(){
     }
 
 }
+/* Output:
+Enter the number of rows in upper triangle 5
+ *  *  *  *  *  *  *  *  * 
+    *  *  *  *  *  *  *    
+       *  *  *  *  *       
+          *  *  *
+             *
+          *  *  * 
+       *  *  *  *  *
+    *  *  *  *  *  *  * 
+ *  *  *  *  *  *  *  *  *    */

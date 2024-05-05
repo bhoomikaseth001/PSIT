@@ -45,6 +45,17 @@ int main() {
 
         cout << endl;
     }
-
-    return 0;
 }
+
+/*
+Output:
+Enter the number of width of triangle: 5
+*               * 
+* *           * *
+* * *       * * * 
+* * * *   * * * *
+* * * * * * * * *
+* * * *   * * * * 
+* * *       * * * 
+* *           * *
+*               *    */
