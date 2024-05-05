@@ -1,3 +1,60 @@
+                                   LECTURE 9
+                                   prog.cpp
+            
+//WAP in CPP to insert an array of 'n' size and sort first k elements in ascending order and remaining 'n-k' in descending order
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n,k,i,j;
+    cout<<"Enter the size";
+    cin>>n;
+    cout<<"Enter the value of k";
+    cin>>k;
+
+   int arr[n];
+
+    cout<<"Enter the elements \n";
+    for ( i = 0; i < n; i++)
+        cin>>arr[i];
+
+    for(i=0;i<(n-k);i++)
+    {
+        for(j=0;j<(n-k)-i-1;j++)
+        {        
+            if(arr[j+1]<arr[j]){
+                int temp=arr[j];
+		        arr[j]=arr[j+1];
+		        arr[j+1]=temp;
+                } } }
+
+        for(i=0;i<n;i++)
+        {
+        for(j=k;j<n-i-1;j++)
+        {        
+                if(arr[j+1]>arr[j]){
+                    int temp=arr[j];
+		            arr[j]=arr[j+1];
+		            arr[j+1]=temp;
+                }
+            } 
+        }
+
+    for(i=0;i<n;i++)
+		cout<<arr[i]<<" ";
+    cout<<endl;
+}
+
+/*
+Output:
+Enter the size 5
+Enter the value of k 3
+Enter the elements 
+2 1 4 7 9 
+1 2 4 9 7 
+*/
+
 
                                    LECTURE 10                                   
                                AltMartixSort.cpp                                
@@ -19,8 +76,7 @@ int main(){
     for(i=0;i<r;i++){
         for( j=0;j<c;j++){
             cin>>arr[i][j];
-        }
-    }
+        } }
 
     for(i=0;i<r;i++){
         if(i%2==0){
@@ -31,32 +87,34 @@ int main(){
                     int temp=arr[i][k];
 		            arr[i][k]=arr[i][k+1];
 		            arr[i][k+1]=temp;
-                }
+                } 
             }
-        }
+        } 
     }
+
         else{
             for(j=0;j<c-1;j++){
-        for(k=0;k<c-j-1;k++){
-        
+        for(k=0;k<c-j-1;k++)
+        {        
                 if(arr[i][k+1]>arr[i][k]){
                     int temp=arr[i][k];
 		            arr[i][k]=arr[i][k+1];
 		            arr[i][k+1]=temp;
-                }
+                } 
             }
         }
-        }
+    } 
 }
+
         cout<<"After swapping"<<endl;
     for(i=0;i<r;i++){
         for( j=0;j<c;j++){
             cout<<arr[i][j]<<" ";
         }
         cout<<endl;
-    }
-    
-    }
+    } 
+}
+
 /*
 Output:
 Enter the rows 3
@@ -70,14 +128,12 @@ After swapping
 3 2 1         
 1 2 3   
 */
-output
 
 
                                    LECTURE 10                                   
                            AltMatrixSortOptimised.cpp                           
 
-//    WAP in CPP to print a matrix and then sort rows in ascending and descending order alternatively 
-//complexity O(n^3)
+//    WAP in CPP to print a matrix and then sort rows in ascending and descending order alternatively using in-built function 
  
 #include<iostream>
 #include<algorithm>
@@ -100,14 +156,12 @@ int main(){
     }
 
     for(i=0;i<r;i++){
-        if(i%2==0){
+        if(i%2==0)
             sort(arr[i],arr[i]+c);
-        }
-        else{
+        else
             sort(arr[i],arr[i]+c,greater<int>());
         }
 
-        }
         cout<<"After swapping"<<endl;
     for(i=0;i<r;i++){
         for( j=0;j<c;j++){
@@ -115,8 +169,7 @@ int main(){
         }
         cout<<endl;
     }
-    
-    }
+}
 
 /*
 Output:
@@ -134,52 +187,7 @@ After swapping
 
                                    LECTURE 10                                   
                                matrixtemplate.cpp                               
-
-// #include<iostream>
-// #include<algorithm>
-// using namespace std;
-// template<typename B>
-// void Sort(B *arr,int r,int c);
-// int main(){
-//     int r,c,i,j,k;
-//     cout<<"Enter the rows ";
-//     cin>>r;
-//     cout<<"Enter the columns ";
-//     cin>>c;
-
-//     int arr[r][c];
-
-//     cout<<"Enter the elements: "<<endl;
-//     for(i=0;i<r;i++){
-//         for( j=0;j<c;j++){
-//             cin>>arr[i][j];
-//         }
-//     }
-
-//     cout<<"After swapping"<<endl;
-//     for(i=0;i<r;i++){
-//         for( j=0;j<c;j++){
-//             cout<<arr[i][j]<<" ";
-//         }
-//         cout<<endl;
-//     }
-// }
-//     template<typename B>
-//     void Sort(B *arr,int r,int c){
-//         int i;
-//     for(i=0;i<r;i++){
-//         if(i%2==0){
-//             sort(arr[i],arr[i]+c);
-//         }
-//         else{
-//             sort(arr[i],arr[i]+c,greater<int>());
-//         }
-
-//         }
-        
-//     }
-
-    
+ 
 #include<iostream>
 
 using namespace std;
@@ -195,24 +203,27 @@ void swap(int r, int c, BS **arr){
                     BS temp=arr[i][k];
 		            arr[i][k]=arr[i][k+1];
 		            arr[i][k+1]=temp;
-                }
+                } 
             }
-        }
+        } 
     }
+
         else{
-            for(int j=0;j<c-1;j++){
-        for(int k=0;k<c-j-1;k++){
-        
+            for(int j=0;j<c-1;j++)
+            {
+        for(int k=0;k<c-j-1;k++)
+        {        
                 if(arr[i][k+1]>arr[i][k]){
                     BS temp=arr[i][k];
 		            arr[i][k]=arr[i][k+1];
 		            arr[i][k+1]=temp;
-                }
+                } 
             }
-        }
-        }
+        } 
+    } 
+    } 
 }
-}
+
 int main(){
     int r,c,i,j;
     cout<<"Enter the rows ";
@@ -225,9 +236,6 @@ int main(){
         arr[i] = new int[c];
     }
 
-
-    
-    
     cout<<"Enter the elements: "<<endl;
     for( i=0;i<r;i++){
         for( j=0;j<c;j++){
@@ -244,8 +252,7 @@ int main(){
         }
         cout<<endl;
     }
-    
-    }
+}
 
 /*
 Output:
@@ -266,7 +273,9 @@ After swapping
 
 #include<iostream>
 template<typename T>
+
 void Swap(T &a,T &b);
+
 int main(){
     using namespace std;
     int i=10;
@@ -290,6 +299,7 @@ int main(){
         a=b;
         b=temp;
     }
+
 /*
 Output:
 i,j= 10 , 20
@@ -343,11 +353,8 @@ int main() {
             cout << "  ";
 
         // Print stars for right side
-        for(int j = 0; j <= i; j++) {
-            
+        for(int j = 0; j <= i; j++)
                 cout << "* ";
-        }
-
         cout << endl;
     }
 }
@@ -365,7 +372,6 @@ Enter the number of width of triangle: 5
 * *           * *
 *               *    */
 
-
                                    LECTURE 11                                   
                               hollowrectangle.cpp                               
 
@@ -373,6 +379,7 @@ Enter the number of width of triangle: 5
 
 #include<iostream>
 using namespace std;
+
 int main(){
     int l,b,i,j;
     cout<<"Enter the number of length of a rectangle";
@@ -388,8 +395,7 @@ int main(){
         }
         cout<<"\n";
     }
-
-    }
+}
 
 /*
 Output:
@@ -412,6 +418,7 @@ Enter the number of breadth of a rectangle 8
 
 #include<iostream>
 using namespace std;
+
 int main(){
     int n;
     cout<<"Enter the number of rows in upper triangle";
@@ -438,6 +445,7 @@ int main(){
     }
 
 }
+
 /* Output:
 Enter the number of rows in upper triangle 5
  *  *  *  *  *  *  *  *  * 
@@ -469,7 +477,6 @@ int factorial(int n){
 int Pascaltriangle(int i,int j){
     int value;
              value = factorial(i)/(factorial(j)*factorial(i-j));
-    
     return value;
 }
 int main(){
@@ -483,12 +490,11 @@ int main(){
         cout<<" ";
          s--;
         for(int j=0;j<=i;j++)
-        {val=factorial(i)/(factorial(j)*factorial(i-j));
-        cout<<" "<<val<<" ";}
-       
-        cout<<endl;
+        {
+            val=factorial(i)/(factorial(j)*factorial(i-j));
+            cout<<" "<<val<<" ";}
+            cout<<endl;
     }
-    
 }
 
 /*
@@ -505,9 +511,11 @@ Enter the number of rows 5
                              RotatationOfArray.cpp                              
 
 //WAP in CPP to print the rotation of an array by k-times using function template
+
 #include<iostream>
 using namespace std;
 template <typename BS>
+
 void rotate(int n,int k,BS *arr){
     for(int i=1;i<=k;i++) {
         BS temp=arr[n-1];
@@ -516,21 +524,25 @@ void rotate(int n,int k,BS *arr){
         arr[0]=temp;
     }
 }
+
 int main() {
     int n,i,j,k,temp;
- 
    cout<<"Enter the number of elements";
    cin>>n;
    int arr[n];
     cout<<"Enter the number of steps";
     cin>>k;
+
     cout<<"Enter the elements";
     for(int i=0;i<n;i++)
         cin>>arr[i];
+
         rotate(n,k,arr);
+
  for(int i=0;i<n;i++)
  cout<<arr[i];
 }
+
 /*
 Output:
 Enter the number of elements 6
