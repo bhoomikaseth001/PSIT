@@ -39,3 +39,16 @@ int main(){
     }
     
     }
+
+/*
+Output:
+Enter the rows 3
+Enter the columns 3
+Enter the elements: 
+3 2 1  
+1 2 3 
+3 2 1
+After swapping
+1 2 3
+3 2 1
+1 2 3*/

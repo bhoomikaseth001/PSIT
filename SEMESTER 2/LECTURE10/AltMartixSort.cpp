@@ -54,7 +54,7 @@ int main(){
     
     }
 /*
-output:
+Output:
 Enter the rows 3
 Enter the columns 3
 Enter the elements: 

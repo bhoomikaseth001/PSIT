@@ -24,4 +24,11 @@ int main(){
         a=b;
         b=temp;
     }
-
+/*
+Output:
+i,j= 10 , 20
+Using compiler generated int swapper
+Now i,j= 20 , 10
+x,y= 24.5 , 54.2
+Using compiler generated int swapper
+Now x,y= 54.2 , 24.5*/

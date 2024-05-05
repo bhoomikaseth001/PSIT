@@ -47,3 +47,12 @@ int main(){
     cout<<endl;
 
 }
+
+/*
+Output:
+Enter the size 5
+Enter the value of k 3
+Enter the elements 
+2 1 4 7 9 
+1 2 4 9 7 
+*/
