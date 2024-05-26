@@ -17,7 +17,7 @@ def dump_code_to_text(start_lecture, end_lecture):
                                     with open(file_path, "r", encoding="utf-8") as f:
                                         code = f.read()
                                         # Specify wider centering
-                                        text_file.write(f"\n{'LECTURE ' + lecture_number:^80}\n")
+                                        text_file.write(f"\n{'LECTURE' + lecture_number:^80}\n")
                                         text_file.write(f"{file:^80}\n\n")
                                         text_file.write(code.strip())  # Remove trailing whitespace
                                         text_file.write("\n\n")  # Add a single newline after each code block
