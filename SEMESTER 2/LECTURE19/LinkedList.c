@@ -1,3 +1,4 @@
+//to perform all the functions of Linked List
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct node
