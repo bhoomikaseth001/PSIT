@@ -1,0 +1,26 @@
+*{text-align : center;
+
+}h1{
+    text-align : center;
+    color:whitesmoke;
+     background-color: #0b86c4;
+}
+body{
+    background-color:wheat;
+}
+img{
+    mix-blend-mode: darken;
+    
+}
+form{
+    padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    /* border: 1px solid rgb(102, 75, 75); */
+    border-radius: 5px;
+}
