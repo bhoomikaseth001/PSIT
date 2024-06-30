@@ -1,283 +1,767 @@
 
-                                   LECTURE17                                    
-                              BinarySearchTree.cpp               
+                                   LECTURE19                                    
+                                  LinkedList.c                                  
 
-/*BINARY SEARCH TREE*/
-#include <iostream>
+//  To perform all the functions of Linked List
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node
+{
+    int data;
+    struct node *next;
+}NODE;
+NODE *start = NULL;
+NODE *create(NODE*);
+NODE *display(NODE*);
+NODE *insert_at_beginning(NODE*,int);
+NODE *insert_at_end(NODE*,int);
+NODE *insert_before(NODE*,int);
+NODE *insert_after(NODE*,int);
+NODE *delete_from_beginning(NODE*);
+NODE *delete_from_end(NODE*);
+NODE *delete_specific_node(NODE*, int);
+NODE *sort(NODE*);
+NODE* middleofLL(NODE*);
+
+int main()
+{
+    int ch;
+    for(int i=0;i<1000;i++){
+    printf("MENU DRIVEN");
+    printf("\n Press 1 to CREATE LIST ");
+    printf("\n Press 2 to DISPLAY LIST ");
+    printf("\n Press 3 to INSERT AT BEGINNING ");
+    printf("\n Press 4 to INSERT AT END ");
+    printf("\n Press 5 to INSERT BEFORE A NODE ");
+    printf("\n Press 6 to INSERT AFTER A NODE ");
+    printf("\n Press 7 to DELETE FROM BEGINNING ");
+    printf("\n Press 8 to DELETE FROM END ");
+    printf("\n Press 9 to DELETE A SPECIFIC NODE ");
+    printf("\n Press 10 to SORT THE LIST ");
+    printf("\n Press 11 to FIND THE MIDDLE OF THE LIST ");
+    printf("\n Press 0 to EXIT ");
+    printf("\n Enter your choice : ");
+    scanf("%d",&ch);
+    switch(ch){
+        case 0: exit(0);
+                break;
+        case 1: start = create(start);
+                break;
+        case 2: display(start);
+                break;
+        case 3: printf("Enter the data to be inserted at the beginning: ");
+                int num1;
+                scanf("%d", &num1);
+                start = insert_at_beginning(start, num1);
+                break;
+        case 4: printf("Enter the data to be inserted at the end: ");
+                int num2;
+                scanf("%d", &num2);
+                start = insert_at_end(start, num2);
+                break;
+        case 5: printf("Enter the data to be inserted before a particular node: ");
+                int num3,key1;
+                scanf("%d", &num3);
+                start = insert_before(start, num3);
+                break;
+        case 6: printf("Enter the data to be inserted after a particular node: ");
+                int num4,key2;
+                scanf("%d", &num4);
+                start = insert_after(start, num4);
+                break;
+        case 7: start=delete_from_beginning(start);
+                break;
+        case 8: start=delete_from_end(start);
+                break;
+        case 9: printf("Enter the index of the node to be deleted : ");
+                int index;
+                scanf("%d", &index);
+                start=delete_specific_node(start,index);
+                break;
+        case 10:start=sort(start);
+                break; 
+        case 11:start=middleofLL(start);
+                break;
+        default: printf("Invalid choice : ");
+        }
+    }
+}
+
+
+NODE* create(NODE *start)
+{
+    NODE *newnode, *ptr;
+    int num;
+    printf("Enter the data (-1 to end) : ");
+    scanf("%d", &num);
+    while (num != -1)
+    {
+        newnode = (NODE *)malloc(sizeof(NODE));
+        newnode->data = num;
+        if (start == NULL)
+        {
+            newnode->next = NULL;
+            start = newnode;
+        }
+        else
+        {
+            ptr = start;
+            while (ptr->next != NULL)
+            {
+                ptr = ptr->next;
+            }
+            ptr->next = newnode;
+            newnode->next = NULL;
+        }
+        printf("\nEnter the data (-1 to end): ");
+        scanf("%d", &num);
+    }
+    return start;
+}
+
+NODE* display(NODE *start){
+    NODE *ptr;
+    ptr=start;
+    printf("Entered Linked List : \n");
+    if(ptr==NULL){
+        printf("List is Empty\n");
+        return start;
+    }
+    while(ptr!=NULL){
+        printf("  %d ",ptr->data);
+        ptr=ptr->next;
+    }
+    printf("\n");
+    return start;
+}
+
+NODE* insert_at_beginning(NODE*start,int num){
+        NODE *newnode;
+        newnode = (NODE *)malloc(sizeof(NODE));
+        newnode->data=num;
+        newnode->next=start;
+        start=newnode;
+        return start;
+}
+
+NODE* insert_at_end(NODE *start,int num){
+        NODE *newnode,*ptr;
+        newnode = (NODE *)malloc(sizeof(NODE));
+        newnode->data=num;
+        ptr = start;
+            while (ptr->next != NULL)
+            {
+                ptr = ptr->next;
+            }
+            ptr->next = newnode;
+            newnode->next = NULL;
+        return start;
+}
+NODE* insert_before(NODE* start,int num){
+    NODE *newnode,*ptr,*preptr;
+    int key;
+    newnode = (NODE *)malloc(sizeof(NODE));
+    printf("Enter the value before which u have to add a node : ");
+        scanf("%d ",&key); 
+    ptr = start;
+    newnode->data=num;
+             
+    while( ptr->next !=NULL && ptr->data != key){
+    preptr=ptr;
+    ptr=ptr->next;
+    }
+    if (ptr == NULL) {
+    printf("Key not found in the list\n");
+    } else {
+        preptr->next=newnode;
+        newnode->next=ptr;
+    }
+        return start;
+}
+
+NODE* insert_after(NODE* start,int num){
+     NODE *newnode,*ptr,*preptr;
+     int key;
+        newnode = (NODE *)malloc(sizeof(NODE));
+        printf("Enter the value after which u have to add a node : ");
+                scanf("%d ",&key); 
+        ptr = start;
+        newnode->data=num;
+             
+        while( preptr !=NULL && preptr->data != key){
+        preptr=ptr;
+        ptr=ptr->next;
+        }
+        if (preptr == NULL) {
+        printf("Key not found in the list\n");
+    } else {
+        preptr->next=newnode;
+        newnode->next=ptr;
+    }
+        return start;
+}
+
+NODE* delete_from_beginning(NODE*start){
+    if (start == NULL) {
+        printf("The list is already empty.\n");
+        return start;
+    }
+        NODE *ptr=start;
+        start=start->next;
+       free(ptr);
+       //if you try to print start here u will get a random value as start will be free and not be deleted
+        return start;
+}
+
+NODE* delete_from_end(NODE *start){
+        NODE *ptr,*ptr1;
+        if (start == NULL) {
+        printf("The list is already empty.\n");
+        return start;
+    }
+        if(start->next==NULL){
+            free(start);
+            start=NULL;
+        }
+        else{
+            ptr=start;
+            while (ptr->next != NULL)
+            {
+                ptr1=ptr;
+                ptr = ptr->next;
+            }
+            ptr1->next = NULL;
+            free(ptr);
+        }
+            return start;
+}
+
+NODE* delete_specific_node(NODE *start, int index){
+    if (start == NULL) {
+        printf("The list is already empty.\n");
+        return start;
+    }
+    NODE *ptr=start,*preptr=NULL;
+    int curr_index=0;
+        if(index==0){
+        start=ptr->next;
+        free(start);
+        return start;
+    }
+        while(ptr != NULL && curr_index<index){
+            preptr=ptr;
+            ptr=ptr->next;
+            curr_index++;
+        }
+            if(ptr!=NULL && ptr->next!=NULL){
+                preptr->next=ptr->next;
+                free(ptr);
+                
+                return start;
+            }
+            else{printf("Index out of range\n");
+        return start;}
+    
+}
+
+NODE* sort(NODE* start){
+    if (start == NULL || start->next == NULL) {
+        return start;
+    }
+    NODE *ptr1,*ptr2;
+    int temp;
+    for(ptr1=start;ptr1!=NULL;ptr1=ptr1->next){
+        for(ptr2=ptr1->next;ptr2 !=NULL;ptr2=ptr2->next){
+            if(ptr1->data > ptr2->data){
+                int temp=ptr1->data;
+                ptr1->data=ptr2->data;
+                ptr2->data=temp;
+            }
+        }
+    }
+    return start;
+}
+NODE* middleofLL(NODE* start){
+    // struct node * ptr = head;
+    // int count=0;
+    // while(ptr!=NULL){
+    //     ptr=ptr->next;
+    //     count++;
+    // }
+    // count/=2;
+    // int i=0;
+    // ptr=head;
+    // while(i<=count){
+    //     ptr=ptr->next;
+    //     i++;
+    // }
+    // printf("");
+    // can be done using slow pointer and fast pointer
+    NODE* ptr = start;
+    NODE* slowptr = start;
+    while(ptr->next->next != NULL){
+        ptr = ptr->next->next;
+        slowptr = slowptr->next;
+    }
+    printf("mid is ",slowptr->data);
+}
+
+
+                                   LECTURE21                                    
+                                  CircularLL.c                                  
+
+#include<stdio.h>
+#include <stdlib.h>
+typedef struct node
+{
+    int data;
+    struct node *next;
+}NODE;
+NODE *start = NULL;
+
+
+NODE* create(NODE* start)
+{
+    NODE* newnode,*ptr;
+    int num;
+    printf("Enter the data(-1 to end) : ");
+    scanf("%d",&num);
+    while(num!=-1){
+        newnode= (NODE*) malloc(sizeof(NODE));
+        newnode->data=num;
+        if(start==NULL){
+            
+            start=newnode;
+            newnode->next=start;
+        }
+        else
+        {
+            ptr = start;
+            while (ptr->next != start)
+            {
+                ptr = ptr->next;
+            }
+            ptr->next = newnode;
+            newnode->next = start;
+        }
+        printf("\nEnter the data (-1 to end): ");
+    scanf("%d", &num);
+}
+//ptr=ptr->next;
+return start;
+}
+// NODE *display(NODE *start){
+//     NODE *ptr;
+//     ptr=start;
+//     printf("Entered Linked List : \n");
+//     printf("%d ",ptr->data);
+//     ptr=ptr->next;
+//     while(ptr!=start){
+//         printf("  %d ",ptr->data);
+//         ptr=ptr->next;
+//     }
+//     printf("\n");
+//     return start;
+// } 
+
+NODE *display(NODE *start){
+    NODE *ptr;
+    ptr=start;
+    printf("Entered Linked List : \n");
+    printf("%d ",ptr->data);
+    ptr=ptr->next;
+    while(ptr->next!=start){
+        printf("  %d ",ptr->data);
+        ptr=ptr->next;
+    }
+    printf("  %d ",ptr->data);
+    printf("\n");
+    return start;
+} 
+// NODE* insert_beg(NODE* start,int num){
+//     NODE*ptr;
+//     NODE* newnode =(NODE*)malloc(sizeof(NODE));
+//     newnode->data=num;
+//         newnode->next=start;
+//         start=newnode;
+//         ptr=ptr->next;
+//         return start;
+// }
+int main(){
+    start=create(start);
+    display(start);
+    // int num;
+    // printf("Enter the element to be inserted : ");
+    // scanf("%d ",&num);
+    // start=insert_beg(start,num);
+ }
+
+
+                                   LECTURE22                                    
+                                    set2.cpp                                    
+
+#include<iostream>
+#include<set>
+#include<utility>
+using namespace std;
+int main() { 
+    set<int> my_set={15,4,8,2,4,1};
+    for(auto var:my_set)
+        cout<<var<<" ";
+        cout<<endl;
+
+    set<int>my_set2;
+    my_set2.insert(2);
+    my_set2.insert(1);
+    my_set2.insert(4);
+    my_set2.insert(2);
+    my_set2.insert(6);
+    for(auto var : my_set2)
+        cout<<var<<" ";
+    cout<<endl;
+    cout<<my_set2.size()<<endl;
+    my_set2.clear();
+    cout<<my_set2.size()<<endl;
+    cout<<my_set2.empty()<<endl;
+
+
+    set<int>::iterator it;
+    for(it=my_set.begin();it!=my_set.end();++it)
+        cout<<*it<<" ";
+        cout<<endl;
+
+
+    //Sort a set in decreasing order
+    set<int, greater<int>>my_set3={5,3,8,1,4};
+    for(int var : my_set3)
+        cout<<var<<" ";
+    cout<<endl;
+    my_set3.erase(8);
+    for(int var : my_set3)
+        cout<<var<<" ";
+    cout<<endl;
+    cout<<my_set3.empty()<<endl;
+
+    int num=4;
+    // cout<<"Enter a number";
+    // cin>>num;
+    if(my_set.count(num)==1)
+        cout<<"Element exist";
+    else
+        cout<<"Element do not exist";
+    return 0;
+
+//test for unordered set    
+}
+/*OUTPUT: 
+1 2 4 8 15
+1 2 4 6
+4
+0
+1
+1 2 4 8 15
+8 5 4 3 1
+5 4 3 1
+0  */
+
+
+                                   LECTURE23                                    
+                                  doublyLL.cpp                                  
+
+#include<iostream>
+
 using namespace std;
 
 typedef struct node {
-    int value;
-    struct node *left;
-    struct node *right;
-}NODE;
+    struct node* prev;
+    struct node* next;
+    int data;
+} NODE;
 
-NODE* newNode(int val) {
-    struct node *temp = new struct node;
-    temp->value = val;
-    temp->left = NULL;
-    temp->right = NULL;
-    return temp;
-}
+NODE* create_LL() {
+    NODE* start = NULL;
+    NODE* ptr = start;
+    int num;
+    cout << "Enter the data (-1 to end) : ";
+    cin >> num;
+    while (num != -1) {
+        NODE* newnode = new NODE;
+        newnode->data = num;
+        newnode->prev = NULL;
+        newnode->next = NULL;
 
-void insert(NODE *&root, int item) {
-    NODE*ptr = root;
-    NODE*ptr1 = NULL; 
-    bool flag = false;
-
-    while (ptr != NULL && !flag) {
-        if (item < ptr->value) { 
-            ptr1 = ptr;
-            ptr = ptr->left;
-        } else if (item > ptr->value) { 
-            ptr1 = ptr;
-            ptr = ptr->right;
+        if (start == NULL) {
+            start = newnode;
         } else {
-            flag = true;
-            cout << "Item already exists." << endl;
-            return;
+            ptr = start;
+            while (ptr->next != NULL)
+                ptr = ptr->next;
+            ptr->next = newnode;
+            newnode->prev = ptr;
         }
+        cout << "Enter the data (-1 to end) : ";
+        cin >> num;
     }
-    if (ptr == NULL) {
-       NODE*newNode = new NODE;
-        newNode->value = item; 
-        newNode->left = NULL;
-        newNode->right = NULL;
+    return start;
+}
 
-        if (ptr1 == NULL) {
-            root = newNode;
-        } else if (ptr1->value < item) {
-            ptr1->right = newNode;
+NODE* getEndNode(NODE* head) {
+    NODE* ptr = head;
+    while (ptr->next) {
+        ptr = ptr->next;
+    }
+    return ptr;
+}
+
+void display(NODE* head, int revFlag = 0, int debugFlag = 0) {
+    NODE* cur = head;
+    if (revFlag) {
+        cur = getEndNode(head);
+        cout << "Reversed ";
+    }
+    cout << "Doubly Linked List:\n";
+    while (cur != NULL) {
+        if (debugFlag)
+            cout << "current value: ";
+        cout << cur->data << " ";
+        if (debugFlag) {
+            cout << "current address: " << cur << " ";
+            cout << "previous address: " << cur->prev << " ";
+            cout << "next address: " << cur->next << endl;
+        }
+        if (revFlag)
+            cur = cur->prev;
+        else
+            cur = cur->next;
+    }
+    cout << endl;
+}
+
+NODE* insert_beginning(NODE* start) {
+    int num;
+    cout << "Enter the data to be inserted at the beginning : ";
+    cin >> num;
+    NODE* newnode = new NODE;
+    newnode->data = num;
+    newnode->next = start;
+    newnode->prev = NULL;
+
+    if (start != NULL) {
+        start->prev = newnode;
+    }
+    start = newnode;
+    return start;
+}
+
+NODE* insert_end(NODE* start) {
+    int num;
+    cout << "Enter the data to be inserted at the end :";
+    cin >> num;
+    NODE* ptr = start;
+    NODE* newnode = new NODE;
+    while (ptr->next != NULL)
+        ptr = ptr->next;
+    newnode->data = num;
+    newnode->prev = ptr;
+    newnode->next = NULL;
+    ptr->next = newnode;
+    return start;
+}
+
+NODE* insert_after(NODE* start) {
+    int num, val;
+    cout << "Enter the data to be inserted after a value :";
+    cin >> num;
+    NODE* ptr = start;
+    NODE* newnode = new NODE;
+    cout << "Enter the data after which the data is to be inserted : ";
+    cin >> val;
+    while (ptr != NULL && ptr->data != val)
+        ptr = ptr->next;
+    if (ptr != NULL) {
+        newnode->data = num;
+        newnode->prev = ptr;
+        newnode->next = ptr->next;
+        if (ptr->next != NULL) {
+            ptr->next->prev = newnode;
+        }
+        ptr->next = newnode;
+    }
+    return start;
+}
+
+NODE* insert_before(NODE* start) {
+    int num, val;
+    cout << "Enter the data to be inserted before a value :";
+    cin >> num;
+    NODE* ptr = start;
+    NODE* newnode = new NODE;
+    cout << "Enter the data before which the data is to be inserted : ";
+    cin >> val;
+    while (ptr != NULL && ptr->data != val)
+        ptr = ptr->next;
+    if (ptr != NULL) {
+        newnode->data = num;
+        newnode->prev = ptr->prev;
+        newnode->next = ptr;
+        if (ptr->prev != NULL) {
+            ptr->prev->next = newnode;
         } else {
-            ptr1->left = newNode;
+            start = newnode;
         }
+        ptr->prev = newnode;
     }
+    return start;
 }
 
-void inorderTraversal(NODE *root) {
-    if (root != NULL) {
-        inorderTraversal(root->left);
-        cout << root->value << " ";
-        inorderTraversal(root->right);
+NODE* delete_beginning(NODE* start) {
+    NODE* ptr = start;
+    cout<<"Deleting element from the beginning : "<<endl;
+    if (start != NULL) {
+        start = start->next;
+        if (start != NULL)
+            start->prev = NULL;
+        delete ptr;
     }
+    return start;
 }
 
-void preorderTraversal(NODE *root) {
-    if (root != NULL) {
-        cout << root->value << " ";
-        preorderTraversal(root->left);
-        preorderTraversal(root->right);
+NODE* delete_end(NODE* start) {
+        cout<<"Deleting element from the end : "<<endl;
+
+    if (start == NULL) {
+        return start;
     }
+    NODE* ptr = start;
+    while (ptr->next != NULL)
+        ptr = ptr->next;
+    if (ptr->prev != NULL) 
+        ptr->prev->next = NULL;
+    // } else {
+    //     start = NULL;
+    // }
+    delete ptr;
+    return start;
 }
 
-void postorderTraversal(NODE *root) {
-    if (root != NULL) {
-        postorderTraversal(root->left);
-        postorderTraversal(root->right);
-        cout << root->value << " ";
+NODE* delete_a_particular_node(NODE* start){
+    int val;
+    NODE* ptr = start;
+    cout << "Enter the data is to be deleted : ";
+    cin >> val;
+    while (ptr != NULL && ptr->data != val)
+        ptr = ptr->next;
+    ptr->prev->next = ptr->next ;
+    ptr->next=ptr->prev;
+    delete ptr;
+    return start;
+}
+
+NODE* delete_before(NODE* start) {
+    int val;
+    cout << "Enter the data before which the data is to be deleted: ";
+    cin >> val;
+
+    NODE* ptr = start;
+    while (ptr != NULL && ptr->data != val) {
+        ptr = ptr->next;
     }
+
+    if (ptr == NULL || ptr->prev == NULL) {
+        // Value not found or it is the first node (no node before it)
+        cout << "No node exists before the specified value." << endl;
+        return start;
+    }
+
+    NODE* node_to_delete = ptr->prev;
+
+    if (node_to_delete->prev != NULL) {
+        node_to_delete->prev->next = ptr;
+        ptr->prev = node_to_delete->prev;
+    } else {
+        // The node to delete is the first node
+        start = ptr;
+        ptr->prev = NULL;
+    }
+
+    delete node_to_delete;
+    return start;
+}
+
+NODE* delete_after(NODE* start) {
+    int val;
+    cout << "Enter the data after which the data is to be deleted: ";
+    cin >> val;
+
+    NODE* ptr = start;
+    while (ptr != NULL && ptr->data != val) {
+        ptr = ptr->next;
+    
+    }
+
+    NODE* node_to_delete = ptr->next;
+
+    if (node_to_delete->next != NULL) {
+        node_to_delete->next->prev = ptr;
+        ptr->next = node_to_delete->next;
+    } else {
+        // The node to delete is the last node
+       
+        ptr->next = NULL;
+    }
+
+    delete node_to_delete;
+    return start;
 }
 
 int main() {
-    NODE *root = NULL; 
-    insert(root, 5);
-    insert(root, 3);
-    insert(root, 7);
-    insert(root, 2);
-    insert(root, 4);
-    insert(root, 6);
-    insert(root, 8);
-    insert(root, 5); 
-    cout << "In-order traversal of the BST: ";
-    inorderTraversal(root);
-    cout << endl;
-
-    cout << "Pre-order traversal of the BST: ";
-    preorderTraversal(root);
-    cout << endl;
-
-    cout << "Post-order traversal of the BST: ";
-    postorderTraversal(root);
-    cout << endl;
+    int ch;
+    for(int i=0;i<1000;i++){
+    printf("MENU DRIVEN");
+    printf("\n Press 1 to CREATE LIST ");
+    printf("\n Press 2 to DISPLAY LIST ");
+    printf("\n Press 3 to INSERT AT BEGINNING ");
+    printf("\n Press 4 to INSERT AT END ");
+    printf("\n Press 5 to INSERT BEFORE A NODE ");
+    printf("\n Press 6 to INSERT AFTER A NODE ");
+    printf("\n Press 7 to DELETE FROM BEGINNING ");
+    printf("\n Press 8 to DELETE FROM END ");
+    printf("\n Press 9 to DELETE A PARTICULAR NODE ");
+    printf("\n Press 10 to DELETE BEFORE A NODE ");
+    printf("\n Press 11 to DELETE AFTER A NODE ");
+    printf("\n Press 0 to EXIT ");
+    printf("\n Enter your choice : ");
+    scanf("%d",&ch);
+    switch(ch){
+    NODE* start;
+    case 0: exit(0);
+            break;
+    case 1: start= create_LL();
+            break;
+    case 2: display(start);
+            cout<<endl;
+            display(start, 0, 1);
+            break;
+    case 3: start = insert_beginning(start);
+            break;
+    case 4: start = insert_end(start);
+            break;
+    case 5: start = insert_before(start);
+            break;
+    case 6: start = insert_after(start);
+            break;
+    case 7: start = delete_beginning(start);
+            break;
+    case 8: start = delete_end(start);
+            break;
+    case 9: start=delete_a_particular_node(start);
+            break;
+    case 10:start = delete_before(start);
+            break;
+    case 11:start = delete_after(start);
+            break;
+    default: cout<<"INVALID CHOICE"<<endl;
+}
     }
-    /*Output:
-                Item already exists.
-                In-order traversal of the BST: 2 3 4 5 6 7 8
-                Pre-order traversal of the BST: 5 3 2 4 7 6 8
-                Post-order traversal of the BST: 2 4 3 6 8 7 5 */
-
-
-                                   LECTURE18                                    
-                                  capacity.cpp                                  
-
-// Demonstrate that the Vectors are dynamic in nature
-
-#include <iostream>
-#include <vector>
-int main() {
-    using namespace std;
-vector<int> vec;
-// Display initial size and capacity
-cout << "Initial size: " << vec.size() << ", capacity: " << vec.capacity() <<endl;
-// Add elements to the vector and observe capacity changes
-for (int i = 0; i < 20; ++i) {
-vec.push_back(i);
-cout<<"After adding element "<<i<<" ,  size: "<<vec.size()<<", capacity: "<<vec.capacity()<<endl;
 }
-// Remove elements from the vector
-for (int i = 0; i < 10; ++i) {
-vec.pop_back();
-cout<<"After removing element, size: " <<vec.size()<< ", capacity: "<<vec.capacity()<<endl;
-}
-// Clear the vector
-vec.clear();
-cout<<"After clearing, size: "<<vec.size()<<", capacity: "<<vec.capacity()<<endl;
-return 0;
-}
-/*Output: 
-            Initial size: 0, capacity: 0
-            After adding element 0 , size: 1, capacity: 1
-            After adding element 1 , size: 2, capacity: 2
-            After adding element 2 ,  size: 3, capacity: 4
-            After adding element 3 ,  size: 4, capacity: 4
-            After adding element 4 ,  size: 5, capacity: 8...
-            After adding element 7 ,  size: 8, capacity: 8
-            After adding element 8 ,  size: 9, capacity: 16
-            After adding element 9 ,  size: 10, capacity: 16...
-            After adding element 14 ,  size: 15, capacity: 16
-            After adding element 15 ,  size: 16, capacity: 16
-            After adding element 16 ,  size: 17, capacity: 32
-            
-            After removing element, size: 16, capacity: 32
-            After removing element, size: 15, capacity: 32
-            After removing element, size: 14, capacity: 32
-            After removing element, size: 13, capacity: 32....
-            After clearing, size: 0, capacity: 32   */
-
-
-                                    LECTURE18                                    
-                                ChainHashing.cpp                                
-
-// Program to show chain hashing in c++ for collision removal
-
-#include <iostream>
-#include <vector>
-using namespace std;
-// Node structure for the linked list in each bucket
-struct Node {
-    int key;
-    Node* next;
-    Node(int k) : key(k), next(nullptr) {}
-};
-
-// Hash table using chain hashing
-class HashTable {
-    private:
-    vector<Node*> table;
-    int tableSize;
-    public:
-    // Constructor
-    HashTable(int size) : tableSize(size) {
-        table.resize(tableSize, nullptr);
-    }
-    // Hash function (k mod 10)
-    int hashFunction(int key) {
-        return key % tableSize;
-    }
-    // Insert a key into the hash table
-    void insert(int key) {
-        int index = hashFunction(key);
-        Node* newNode = new Node(key);
-        newNode->next = table[index];
-
-        table[index] = newNode;
-    }
-    // Print the hash table
-    void printHashTable() {
-        for (int i = 0; i < tableSize; ++i) {
-            cout << "Bucket " << i << ": ";
-            Node* current = table[i];
-            while (current) {
-                cout << current->key << " -> ";
-                current = current->next;
-            }       
-        cout << "NULL" << endl;
-        }
-        }
-};
-int main() {
-    HashTable ht(10); // Create hash table with bucket size 10
-    // Insert keys into the hash table
-    ht.insert(1);
-    ht.insert(11);
-    ht.insert(21);
-    ht.insert(3);
-    ht.insert(13);
-    ht.insert(23);
-    ht.insert(24);
-    ht.insert(25);
-    ht.insert(26);
-    // Print the hash table
-    ht.printHashTable();
-     } 
-
-    /*Output: 
-                Bucket 0: NULL
-                Bucket 1: 21 -> 11 -> 1 -> NULL
-                Bucket 2: NULL
-                Bucket 3: 23 -> 13 -> 3 -> NULL
-                Bucket 4: 24 -> NULL
-                Bucket 5: 25 -> NULL
-                Bucket 6: 26 -> NULL
-                Bucket 7: NULL
-                Bucket 8: NULL
-                Bucket 9: NULL */
-
-
-                                   LECTURE18                                    
-                                UnorderedMap.cpp     
-
-// Functions of the unordered map
-#include <iostream>
-#include <unordered_map>
-#include <string> 
-using namespace std;
-int main() {
-unordered_map<int,string> malay;
-malay [1] = "one";
-malay [2] = "two";
-malay [3] = "three";
-
-cout << "Key 1 has value: "<< malay [1] << endl;
-cout << "Key 2 has value: " <<malay [2] << endl;
-// Check if a key exists
-int key = 4;
-auto it = malay.find(key);
-if (it != malay.end()) {
-cout << "Found key " << key << " with value: " << it->second << endl;
-} else {
-cout << "Key " << key << " not found" << endl;
-}
-// Erase an element
-malay.erase(2);
-cout << "After erasing key 2, size of map: " << malay.size() << endl;
-// Check if map is empty
-if (malay.empty()) {
-cout << "Map is empty" << endl;
-} else {
-cout << "Map is not empty" << endl;
-}
-// Clear the map
-malay.clear();
-cout << "After clearing, size of map: " << malay.size() << endl;
-return 0;
-}
-
-/*Output :
-            Key 1 has value: one
-            Key 2 has value: two
-            Key 4 not found
-            After erasing key 2, size of map: 2
-            Map is not empty
-            After clearing, size of map: 0   */
 

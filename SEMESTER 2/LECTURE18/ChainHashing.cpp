@@ -1,65 +1,50 @@
 // 4. Program to show chain hashing in c++ for collision removal
 
 #include <iostream>
-#include <vector>
 using namespace std;
-// Node structure for the linked list in each bucket
-struct Node {
+#define BUCKET_SIZE 10
+struct Node{
     int key;
-    Node* next;
-    Node(int k) : key(k), next(nullptr) {}
+    struct Node * next;
 };
-
-// Hash table using chain hashing
-class HashTable {
-    private:
-    vector<Node*> table;
-    int tableSize;
-    public:
-    // Constructor
-    HashTable(int size) : tableSize(size) {
-        table.resize(tableSize, nullptr);
-    }
-    // Hash function (k mod 10)
-    int hashFunction(int key) {
-        return key % tableSize;
-    }
-    // Insert a key into the hash table
-    void insert(int key) {
-        int index = hashFunction(key);
-        Node* newNode = new Node(key);
-        newNode->next = table[index];
-
-        table[index] = newNode;
-    }
-    // Print the hash table
-    void printHashTable() {
-        for (int i = 0; i < tableSize; ++i) {
-            cout << "Bucket " << i << ": ";
-            Node* current = table[i];
-            while (current) {
-                cout << current->key << " -> ";
-                current = current->next;
-            }       
-        cout << "NULL" << endl;
-        }
-        }
+struct hashMap{
+    struct Node * table[BUCKET_SIZE];
 };
-int main() {
-    HashTable ht(10); // Create hash table with bucket size 10
-    // Insert keys into the hash table
-    ht.insert(1);
-    ht.insert(11);
-    ht.insert(21);
-    ht.insert(3);
-    ht.insert(13);
-    ht.insert(23);
-    ht.insert(24);
-    ht.insert(25);
-    ht.insert(26);
-    // Print the hash table
-    ht.printHashTable();
-     } 
+void initHashTable(struct hashMap * ht){
+    for (int i=0 ; i<BUCKET_SIZE;i++){
+        ht->table[i]=NULL;
+    }
+}
+int hashfunc(int val){
+    return val%BUCKET_SIZE;
+}
+void insert(struct hashMap * ht, int key){
+    int index= hashfunc(key);
+    struct Node * newNode;
+    newNode = new Node;
+    newNode->key=key;
+    newNode->next=ht->table[index];
+    ht->table[index]=newNode;
+}
+
+void printHashTable(struct hashMap * ht){
+    for (int i=0;i<BUCKET_SIZE;i++){
+        struct Node * current = ht->table[i];
+        while(current!=NULL){
+            cout<<current->key<<" -> ";
+            current=current->next;
+        }
+        cout<<"NULL\n";
+    }
+}
+int main(){
+    struct hashMap ht;
+    initHashTable(&ht);
+    insert(&ht,1);
+    insert(&ht,11);
+    insert(&ht,21);
+    printHashTable(&ht);
+}
 
     /*Output: 
                 Bucket 0: NULL
