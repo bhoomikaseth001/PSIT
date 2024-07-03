@@ -277,32 +277,12 @@ NODE* sort(NODE* start){
     }
     return start;
 }
-// NODE* middleofLL(NODE* start){
-//     NODE* ptr = start;
-//     NODE* slowptr = start;
-//     while(ptr->next->next != NULL){
-//         ptr = ptr->next->next;
-//         slowptr = slowptr->next;
-//     }
-//     printf("mid is ",slowptr->data);
-// }
 
 NODE* middleofLL(NODE* start) {
     if (start == NULL) {
         printf("List is empty.\n");
         return NULL;
     }
-
-    // NODE* ptr = start;
-    // NODE* slowptr = start;
-
-    // while (ptr != NULL && ptr->next != NULL) {
-    //     ptr = ptr->next->next;
-    //     slowptr = slowptr->next;
-    // }
-
-    // printf("Middle element is %d\n", slowptr->data);
-    // return slowptr;
      NODE *fastptr = start, *slowptr = start;
     while (fastptr->next != NULL && fastptr->next->next != NULL)
     {
