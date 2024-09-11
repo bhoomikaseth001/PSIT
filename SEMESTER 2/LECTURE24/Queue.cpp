@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 void insert(int, int, int, int*);
-void display(int, int, int*);
+//void display(int, int, int*);
 int main() { 
     int size;
     cout<<"Enter the size ";
@@ -17,8 +17,8 @@ int ch;
                 break;
         case 1:insert(-1,-1,size,queue);
                 break;
-        case 2: display(-1,-1,queue);
-                break;
+        // case 2: display(-1,-1,queue);
+        //         break;
         default: cout<<"Invalid choice : ";
     }
     }
@@ -35,8 +35,8 @@ void insert(int rear,int front,int size, int *queue){
             rear++;
         queue[rear]=num;
      
-}
-void display(int rear,int front,int *queue){
+// }
+// void display(int rear,int front,int *queue){
     if(front==-1 && rear==-1)
         printf("Queue is empty");
         else{
