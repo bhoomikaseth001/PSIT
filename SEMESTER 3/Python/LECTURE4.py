@@ -9,5 +9,5 @@
 # print("Hi","I am","Bhoomika",sep="\n")
 
 x=10
-x=y+=2
+x+=2
 print(x) 
