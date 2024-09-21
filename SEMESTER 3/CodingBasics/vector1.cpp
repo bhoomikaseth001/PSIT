@@ -21,7 +21,7 @@
     // vec2.push_back('6');
     // display(vec2);
     //display(vec3);
-    display(vec4);
+    display(vec4); 
 
     int ele,size;
     
@@ -39,5 +39,9 @@
 // vec.insert(vec.begin()+1,5,24);
 
 //     display(vec);
+
+
+
+
  return 0;
  }

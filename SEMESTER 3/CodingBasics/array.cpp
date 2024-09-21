@@ -7,12 +7,11 @@ int  main(){
     int ind_larg,ind_smal;
     for(int i=0;i<sizeof(arr)/sizeof(int);i++){
         largest=max(arr[i],largest);
-        // ind_larg=i;
+        ind_larg=i;
         smallest=min(arr[i],smallest);
-    }
-        // ind_smal=i;
-        cout<<"Largest value in the array is : "<<largest<<" at position "<<endl;
-        cout<<"Smallest value in the array is : "<<smallest<<" at position "<<endl;
+        ind_smal=i;}
+        cout<<"Largest value in the array is : "<<largest<<" at position "<<ind_larg<<endl;
+        cout<<"Smallest value in the array is : "<<smallest<<" at position "<<ind_smal<<endl;
 
 }
 
