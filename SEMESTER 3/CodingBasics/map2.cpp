@@ -47,6 +47,13 @@ while(it != mp.end()){
 //unordered_map: O(n)
 //map: O(1)
 
-
+//HASH TABLE: Why?? 1. Conversion to integer 2.uniform distribution
+//COLLISION : str1="bhoomika",str2="bhmikaoo"
+// sum of ASCII code = suppose (23) then both of these strings are to be mapped at the same location then collision happens
+//COLLISION HANDLING: 1.Open hashing(separate chaining) :  same place per hi daal do
+//                      "bhoomika"=7th index , "bhmikaoo"=7th index
+//                       (7th index)head node->bhoomika->bhmikaoo
+//                    2.Closed addressing:  
+//Load factor= n/b(We ensure that n/b <0.7), where, n=no.of enteries, and b=no. of boxes available 
 return 0;
 }

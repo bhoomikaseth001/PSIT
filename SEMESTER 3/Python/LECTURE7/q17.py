@@ -1,0 +1,1 @@
+#WAP to count the number of even and odd numbers from the series of numbers

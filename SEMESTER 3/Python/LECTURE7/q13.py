@@ -1,0 +1,1 @@
+#Check whether s number is prime or not
