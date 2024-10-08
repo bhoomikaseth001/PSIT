@@ -1,0 +1,100 @@
+<!-- The table element represents data with more than one dimension, in the form of a table
+ Tables have rpws columns and cells given by their descendents.The rows and column form a grid ; table's cells must complete cover that grid without overlap
+ 
+<th> table header
+The text in <th> elements are bold and centered by default. 
+<tf> table footer
+<tbody> table body
+The <td> tag defines a standard data cell in an HTML table.
+The text in <td> elements are regular and left-aligned by default.
+<tr> table row
+
+ Write a HTML code in which create a table of 3 columns name, city,and age.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LECTURE 5</title>
+
+<body>
+    <style>
+        table th,td{
+            border:2px solid;
+        }
+    </style>
+
+    <table style="width:50%">
+        <tr>
+            <th colspan>NAME</th>
+            <th colspan>CITY</th>
+            <th colspan>AGE</th>
+
+        </tr>
+        <td>BHOOMIKA</td>
+        <td>19</td>
+        <td>LUCKNOW</td>
+        <tr>
+
+        <tr>
+            <td>BHOOMI</td>
+            <td>19</td>
+            <td>KANPUR</td>
+        </tr>
+
+        <tr></tr>
+            <td>ARNAV</td>
+            <td>20</td>
+            <td>DHAKA</td>
+        </tr>
+
+        </tr>
+    </table><br><br>
+
+    <input type="radio">
+    <input type="checkbox">
+    <input type="submit">
+    <input type="button">
+    <input type="date">
+    <input type="time">
+    <input type="file">
+    <br><br>
+    <form action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required> <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required> <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required> <br><br>
+
+        <label for="colour">Favourite Colour:</label>
+        <input type="color" id="colour" name="colour"> <br><br>
+
+        <label for="birthdate">birthdate:</label>
+        <input type="date" id="birthdate" name="birthdate"> <br><br>
+    
+        <input type="submit" value="SUBMIT"> <br><br>
+    </form>
+</body>
+</head>
+</html>
+<!-- An HTML Form is used to collect user input
+ HTML Input types-> submit, checkbox, colour, date, time, email, file, month, age, number, password, range, radio,etc
+ default value of type attribute is text
+ HTML input attribute -> value:an initial value for an input field
+ label: it defines a label for several items
+ <Label></Label> tag defines a label for several items.
+The <label for=""></label> tag defines a label for many form elements.
+The "for" attribute of the <label></label> tag should be equal to the id attirbute of the <input> element to bind them together
+
+ data list : with predefined options, this is connected to an input element
+ Create an HTML form that includes the following:
+ -A text input for the user's name.
+ -An email input for the user's email address.
+ -A password input
+ -A colour picker for the user's favourite colour.
+ -A data picker for the user's birthday
+ -A submit button-->

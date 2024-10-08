@@ -5,6 +5,7 @@
 //Insertion and deletion in heap
 
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class heap{
@@ -71,6 +72,23 @@ class heap{
 
         }
     }
+
+
+    void heapify(int arr[],int size, int i){
+        int largest =i;
+        int LC=2*i;
+         int RC=2*i+1;
+
+         if(LC<size && arr[LC]>arr[largest])
+            largest=LC;
+        if(RC<size && arr[RC]>arr[largest])
+            largest=RC;
+        if(largest !=i){
+            swap(arr[largest],arr[i]);
+            heapify(arr,size,largest);
+        }
+    return;
+    }
 };
 
 int main(){
@@ -83,6 +101,13 @@ int main(){
     h.print();
     h.deletefromHeap();
     h.print();
+
+    int arr1[6]={-1,54,53,55,52,51};
+    int n=5;
+    for(int i=n/2;i>0;i--)
+        h.heapify(arr1,n,i);
+    for(int i=1;i<=n;i++)
+        cout<<arr1[i]<<" ";
     return 0;
 
 }
