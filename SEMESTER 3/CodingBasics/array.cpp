@@ -243,33 +243,4 @@ Why do require an array??  - to store multiple values in a single variable
 // }
 
 /*PAIR SUM*/
-
-#include <bits/stdc++.h>
-using namespace std;
-int main(){
-  vector<int>nums={5,7,7,8,8,8,10};
-  int target=6;
-        int count;
-        vector<int>vec;
-       
-        for(int i=0;i<nums.size();i++){
-            if(nums[i]==target){
-                vec.push_back(i);
-                
-                count=i;
-                for(int j=i;nums[j]==target;j++){
-                    count=j;
-                }
-                break;
-            }
-        }
-        vec.push_back(count);
-        
-        if(vec.empty())
-        cout<<"-1,-1";
-        else
-        {
-          for(int i=0;i<vec.size();i++)
-        cout<<vec[i]<<" ";
-        }
-    }
+ 
