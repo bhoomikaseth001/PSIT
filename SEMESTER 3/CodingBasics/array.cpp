@@ -243,4 +243,9 @@ Why do require an array??  - to store multiple values in a single variable
 // }
 
 /*PAIR SUM*/
- 
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+  int a1[7]={1,2,3,4,5};
+  
+  }
