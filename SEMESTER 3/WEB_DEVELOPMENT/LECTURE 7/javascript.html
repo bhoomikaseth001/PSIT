@@ -13,3 +13,79 @@ function msg(){
 </form>  
 </body>  
 </html>  
+
+<!--message.js
+
+function msg(){  
+ alert("Hello Javatpoint");  
+}  
+
+Let's include the JavaScript file into html page. It calls the JavaScript function on button click.
+
+
+Types of JavaScript Comments
+There are two types of comments in JavaScript.
+
+Single-line Comment
+Multi-line Comment
+
+<script>  
+// It is single line comment  
+document.write("hello javascript");  
+</script>  
+
+Correct JavaScript variables
+var x = 10;  
+var _value="sonoo";  
+
+Incorrect JavaScript variables
+
+var  123=30;  
+var *aa=320;  
+
+<script>  
+function abc(){  
+var x=10;//local variable  
+}  
+</script> 
+
+<script>  
+var data=200;//gloabal variable  
+function a(){  
+document.writeln(data);  
+}  
+function b(){  
+document.writeln(data);  
+}  
+a();//calling JavaScript function  
+b();  
+</script>  
+
+function m(){  
+window.value=100;//declaring global variable by window object  
+}  
+function n(){  
+alert(window.value);//accessing global variable from other function  
+}  
+
+Javascript Data Types
+JavaScript provides different data types to hold different types of values. There are two types of data types in JavaScript.
+
+Primitive data type
+Non-primitive (reference) data type
+JavaScript is a dynamic type language, means you don't need to specify type of the variable because it is dynamically used by JavaScript engine. You need to use var here to specify the data type. It can hold any type of values such as numbers, strings etc. For example:
+
+There are five types of primitive data types in JavaScript.
+String - represents sequence of characters e.g. "hello"
+Number - represents numeric values e.g. 100
+Boolean - represents boolean value either false or true
+Undefined - represents undefined value
+Null - represents null i.e. no value at all
+
+Data Type                                       Description   
+Object                              represents instance through which we can access members
+Array                               represents group of similar values
+RegExp                              represents regular expression
+
+
+-->
