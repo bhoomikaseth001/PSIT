@@ -1,0 +1,94 @@
+<!--Create a survey form 
+HTML forms are an important part of many websites.
+Create a form for a survey on the topic of your choice.
+
+Include a variety of answer options , including text fields, dropdowns, radio buttons, checkboxes,and a submit button. Don't forget to add a title, and consider using CSS to improve the look of your form-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Supply Quality Survey</title>
+    <link rel="stylesheet" href="SURVEYFORM.css">
+</head>
+<body>
+    <div class="survey-form">
+
+        <h1>WATER SUPPLY QUALITY SURVEY</h1>
+
+        <form action="#">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div><br>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div><br>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="locality">Locality</label>
+                <input type="text" id="locality" name="locality" placeholder="Enter your locality" required>
+            </div><br>
+
+            <div class="form-group">
+                <label>How would you rate the quality of water supply in your area?</label>
+
+                <div class="options">
+                    <input type="radio" id="excellent" name="quality" value="Excellent" required>
+                    <label for="excellent">Excellent</label>
+                    <input type="radio" id="good" name="quality" value="Good">
+                    <label for="good">Good</label>
+                    <input type="radio" id="average" name="quality" value="Average">
+                    <label for="average">Average</label>
+                    <input type="radio" id="poor" name="quality" value="Poor">
+                    <label for="poor">Poor</label>
+                    <input type="radio" id="very-poor" name="quality" value="Very Poor">
+                    <label for="very-poor">Very Poor</label>
+                </div>
+            </div><br>
+
+            <div class="form-group">
+                <label>What issues do you face with water supply? (Check all that apply)</label>
+
+                <div class="options">
+                    <input type="checkbox" id="issue1" name="issues" value="Irregular supply">
+                    <label for="issue1">Irregular supply</label>
+                    <input type="checkbox" id="issue2" name="issues" value="Poor quality">
+                    <label for="issue2">Poor quality</label>
+                    <input type="checkbox"id="issue3" name="issues" value="Low pressure">
+                    <label for="issue3">Low pressure</label>
+                    <input type="checkbox"id="issue4" name="issues" value="Other">
+                    <label for="issue4">Other</label>
+                </div>
+            </div><br>
+
+            <div class="form-group">
+                <label for="supply-frequency">How often do you receive water supply?</label>
+
+                <select id="supply-frequency" name="supply-frequency" required>
+                    <option value="" disabled selected>Select frequency</option>
+                    <option value="daily">Daily</option>
+                    <option value="alternate-days">Alternate Days</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="irregular">Irregular</option>
+                </select>
+            </div><br>
+
+            <div class="form-group">
+                <label for="suggestions">Any additional feedback or suggestions?</label>
+                <textarea id="suggestions" name="suggestions" placeholder="Write your feedback here..."></textarea>
+            </div><br>
+            
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
