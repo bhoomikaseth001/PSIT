@@ -1,0 +1,22 @@
+<!--We can validate the email with the help of Js.
+    Here we check the condition related to any email id, like email must have "@" and "."  sign and also email id must be of atleast 10 characters-->
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function validateEmail() {
+            var x = document.myform.email.value; 
+            var atposition = x.indexOf("@"); 
+            var dotposition = x.lastIndexOf("."); 
+
+        // copy kiya hua code hai sab
+            if (atposition < 1 || dotposition < atposition + 2 || dotposition >= x.length || x.length < 10) {
+                alert("Please enter a valid e-mail address.\n(atposition: " + atposition + "\n dotposition: " + dotposition + ")");
+                return false; 
+            }
+            return true; 
+        }
+    </script>
+</head>
+</html>
