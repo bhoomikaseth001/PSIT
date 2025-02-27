@@ -1,0 +1,21 @@
+.container{
+    
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#image1{
+    border:2px solid black;
+    border-radius: 50%;
+
+}
+#image2{
+    border:2px solid black;
+    border-radius: 50%;
+
+}
+#image3{
+    border:2px solid black;
+    
+}

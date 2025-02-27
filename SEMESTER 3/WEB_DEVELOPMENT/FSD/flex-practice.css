@@ -1,0 +1,20 @@
+body{
+background-color: darkgray;
+}
+.flex-container{
+    display: flex;
+    /* flex-direction: row; */
+    background-color: black;
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
+    /* align-items:center; */
+}
+.flex-item{
+    text-align: center;
+    color: white;
+    background-color: rgb(174, 30, 30);
+    padding: 20px;
+    margin: 10px;
+    height: 30px;
+    width: 150px;
+}

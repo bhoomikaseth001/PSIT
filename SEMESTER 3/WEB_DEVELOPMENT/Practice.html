@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            background-color:gray;
+            box-sizing: border-box;
+        }
+        /* body{
+            align-items:center;
+    justify-content: center;
+    min-height:100vh;
+        }
+        .form{
+            align-items: center;
+             background-color: bisque;
+            box-shadow: 0 4px 8px gainsboro;
+            max-width :600px;
+            align-content: center;
+            width:100%;
+            border: 100px;
+                        
+        } */
+
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Optional: Adjust the background color */
+}
+
+form {
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow to the form */
+    background-color: white; /* Optional: Makes form stand out */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+}
+
+
+
+    </style>
+    <div class="form">
+        <h1>Practice Form</h1>
+        <form action="#">
+            <div class="sub-form">
+                <label for="name">Full name</label>
+                <input type="text" placeholder="Enter your full name here" required>
+            <br>
+                <label for="email">Email Address</label>
+                <input type="email" placeholder="Enter your email here" required>
+            <br>
+            
+                <label>Choose your subjects</label>
+                <div class="options">
+                    <input type="radio">
+                    <label for ="P">P</label>
+                    <input type="radio">
+                    <label for ="C">C</label>
+                    <input type="radio">
+                    <label for ="M">M</label>
+                    <input type="radio">
+                    <label for ="CA">CA</label>
+                    <input type="radio">
+                    <label for ="H">H</label><br><br>
+                    <input type="checkbox" id="issue1" name="issues" value="Irregular supply">
+                    <label for="issue1">Irregular supply</label>
+                    <input type="checkbox" id="issue2" name="issues" value="Poor quality">
+                    <label for="issue2">Poor quality</label>
+                    <input type="checkbox"id="issue3" name="issues" value="Low pressure">
+                    <label for="issue3">Low pressure</label><br><br>
+                    <select required>
+                        <option value="" disabled selected>Select school name</option>
+                        <option value="ETS">ETS</option>
+                        <option value="CMS">CMS</option>
+                        <option value="ST.F">ST.F</option>
+
+                    </select>
+                    <br><br>
+                    <textarea name="hehe" id="write"></textarea>
+                </div>
+            </div>
+        </form>
+    </div> 
+</body>
+</html>

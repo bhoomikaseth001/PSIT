@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS VALIDATION</title>
+</head>
+<body>
+        <form id="form">
+            <input type="text" id="name" placeholder="Name" required>
+            <span id="nameError" style="color: red;"></span>
+            <br>
+            <input type="password" id="password" placeholder="Password" required>
+            <span id="passwordError" style="color: red;"></span>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("passwordError").textContent = "";
+            const name = document.getElementById("name").value.trim();
+            const password = document.getElementById("password").value.trim();
+            let isValid = true;
+
+            if (name.length < 6 || !/^[A-Za-z]+$/.test(name)) {
+                document.getElementById("nameError").textContent = "Name must contain only alphabets and be at least 6 characters.";
+                isValid = false;
+            }
+
+            if (password.length < 6) {
+                document.getElementById("passwordError").textContent = "Password must be at least 6 characters long.";
+                isValid = false;
+            }
+            if (isValid) {
+                alert("Form submitted successfully!");
+                this.submit();
+            }
+        });
+    </script>
+</body>
+</html>
