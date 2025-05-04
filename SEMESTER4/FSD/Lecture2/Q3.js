@@ -1,0 +1,10 @@
+    let a=20;
+    let b=10;
+    let add=a+b;
+    let sub=a-b;
+    let mul=a*b;
+    let div=a/b;
+    console.log("Addition of "+a+" and "+b+" is "+add);
+    console.log("Substraction of "+a+" and "+b+" is "+sub);
+    console.log("Multiplication of "+a+" and "+b+" is "+mul);
+    console.log("Division of "+a+" and "+b+" is "+div);

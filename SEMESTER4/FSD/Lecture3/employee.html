@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+</body>
+<script>
+    var arr=["Sonoo","Vimal","Ratan"];
+
+    var emp = new Array(3);
+
+    var emp1= new Array("Sonoo", "Vimal", "Ratan");
+
+    for(i=0;i<arr.length;i++){
+        document.write(arr[i]+"<br>");
+    }
+    document.write("<br>");
+    for(i=0;i<emp1.length;i++){
+        document.write(emp1[i]+"<br>");
+    }
+    document.write("<br>");
+
+    var person=[];
+    person[0]="John";
+    person[1]="Doe";
+    person[2]=46;
+    document.getElementById("demo").innerHTML=person[0]+" "+person.length;
+
+    var fruit=["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo1").innerHTML=fruit.valueOf();
+</script>
+</html>
