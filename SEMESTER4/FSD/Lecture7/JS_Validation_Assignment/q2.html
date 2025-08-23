@@ -1,0 +1,32 @@
+<!--
+Problem: Write a JavaScript function that validates whether the value entered in the "ConfirmPassword" field matches the value entered in the "Password" field.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Match Validation</title>
+</head>
+<body>
+  <form onsubmit="return validatePasswordMatch()">
+    <label>Password:
+    <input type="password" id="password"></label><br>
+    <label>Confirm Password:
+    <input type="password" id="confirmPassword"></label><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validatePasswordMatch() {
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirmPassword').value;
+      if (password !== confirm) {
+        alert("Passwords do not match.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

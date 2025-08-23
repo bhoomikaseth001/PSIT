@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="validate.js"></script>
+</head>
+<body>
+    <form name = "contactForm" onsubmit="return validateForm()">
+    <h2> Application Form</h2>
+    <div class="row">
+        <label> Full Name</label>
+        <input type="text" name="name">
+        <div class ="error" id="nameError"></div>
+    </div>
+
+    <div class="row">
+        <label> Email</label>
+        <input type="text" name="email">
+        <div class ="error" id="emailError"></div>
+    </div>
+    <div class="row">
+        <label> Country</label>
+        <select name = "Country">
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Australia">Australia</option>
+            <option value="Canada">Canada</option>
+        </select>  
+        <div class ="error" id="countryError"></div>
+    </div>
+    <div class="row">
+        <label>Gender</label>
+        <div class="form-inline">
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+        </div>
+        <div class ="error" id="genderError"></div>
+    </div>
+     
+    <div class="row">
+        <label>Hobbies<i>(Optional)</i></label>
+        <div class="form-inline">
+            <label><input type="checkbox" name="hobbies[]" value="sports"> Sports</label>
+            <label><input type="checkbox" name="hobbies[]" value="reading"> Reading</label>
+            <label><input type="checkbox" name="hobbies[]" value="traveling"> Traveling</label>
+        </div>
+    </div>
+    <div class="row">
+        <input type="submit" value="Submit">
+    </div>
+
+</form>
+</body>
+</html>

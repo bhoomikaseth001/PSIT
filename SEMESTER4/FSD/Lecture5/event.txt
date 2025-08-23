@@ -1,0 +1,4 @@
+action taken in corresponding to the event happened
+click->event
+onclick->event handler
+validation-> to get the desired input

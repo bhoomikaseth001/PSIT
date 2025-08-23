@@ -1,0 +1,26 @@
+<!-- Write  a js program that listens for the keyup event on an input field.
+ When a key is pressed and released, it should display the value of the input field in the console. -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <script>
+        // Create an input field
+        const inputField = document.createElement('input');
+        inputField.type = 'text';
+        inputField.placeholder = 'Type something...';
+
+        // Add a keyup event listener to the input field
+        inputField.addEventListener('keyup', function() {
+            console.log(inputField.value);
+        });
+
+        // Append the input field to the body
+        document.body.appendChild(inputField);
+    </script>
+ </body>
+ </html>

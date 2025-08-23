@@ -1,0 +1,31 @@
+<!--
+Problem: Write a JavaScript function that validates whether at least one checkbox is checked.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkbox Validation</title>
+</head>
+<body>
+  <form onsubmit="return validateCheckbox()">
+    <p>Select at least one option:</p>
+    <input type="checkbox" name="option" value="1"> Option 1<br>
+    <input type="checkbox" name="option" value="2"> Option 2<br>
+    <input type="checkbox" name="option" value="3"> Option 3<br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateCheckbox() {
+      const checkboxes = document.querySelectorAll('input[name="option"]:checked');
+      if (checkboxes.length === 0) {
+        alert("Please select at least one option.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

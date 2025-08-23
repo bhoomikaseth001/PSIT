@@ -1,0 +1,30 @@
+<!--
+Write a JavaScript function that validates whether a radio button is selected.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Radio Button Validation</title>
+</head>
+<body>
+  <form onsubmit="return validateRadio()">
+    <p>Select your gender:</p>
+    <input type="radio" name="gender" value="male"> Male<br>
+    <input type="radio" name="gender" value="female"> Female<br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateRadio() {
+      const radios = document.querySelectorAll('input[name="gender"]:checked');
+      if (radios.length === 0) {
+        alert("Please select a gender.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

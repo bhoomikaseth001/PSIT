@@ -1,0 +1,30 @@
+<!-- Write a js program that attempts to parse a non-numeric string as a number using parseInt().
+ Handle any exceptions that may occur and display an error message in the console. -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <script>
+        function parseNonNumericString() {
+            const nonNumericString = "Hello, World!";
+            try {
+                const parsedNumber = parseInt(nonNumericString);
+                if (isNaN(parsedNumber)) {
+                    throw new Error("Parsing failed: Not a valid number");
+                }
+                console.log("Parsed number:", parsedNumber);
+            } catch (error) {
+                console.error("Error:", error.message);
+            }
+        }
+
+        // Call the function to test it
+        parseNonNumericString();
+    </script>
+ </body>
+ </html>

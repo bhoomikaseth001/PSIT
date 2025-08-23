@@ -1,0 +1,29 @@
+<!-- Problem: Write a JavaScript function that validates a form field to ensure it contains only numeric characters.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Numeric Validation</title>
+</head>
+<body>
+  <form onsubmit="return validateNumeric()">
+    <label for="numField">Enter a number:</label>
+    <input type="text" id="numField">
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateNumeric() {
+      const input = document.getElementById('numField').value;
+      const isNumeric = /^\d+$/.test(input);
+      if (!isNumeric) {
+        alert("Please enter only numeric characters.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
