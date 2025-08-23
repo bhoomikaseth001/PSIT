@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Education Background Form</title>
+</head>
+<body>
+    <h1>Education Background</h1>
+    <form action="form3.html" method="get">
+        
+        <textbox>Highest Qualification:</textbox>
+        <select name="qualification" required>
+            <option value="10">10</option>
+            <option value="(10+2)">(10+2)</option>
+            <option value="Graduate">Graduate</option>
+            <option value="Post Graduate">Post Graduate</option>
+            <option value="Doctrate">Doctrate</option>
+        </select>        
+        <br><br>
+
+        <textbox>Year of Passing:</textbox>
+        <input type="number" name="year" min="1900" max="2099" required>
+        <br><br>
+
+        <textbox>Board/University:</textbox>
+        <input type="text" name="board" required>
+        <br><br>
+
+        <textbox>Percentage/CGPA:</textbox>
+        <input type="text" name="marks" required>
+        <br><br>
+
+        <input type="submit" value="Next">
+        <input type="reset" value="Clear">
+
+
+    </head>
+</html>
