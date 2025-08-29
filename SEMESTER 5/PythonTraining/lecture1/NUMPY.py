@@ -1,3 +1,4 @@
+#numpy required homogeneous data
 import numpy as np
 # #printing 2D array
 # n1=np.array([[10,20,30,40],[1,2,3,4]])
